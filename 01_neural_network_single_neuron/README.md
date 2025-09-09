@@ -25,3 +25,11 @@ This introduces the foundational concepts of machine learning, focusing on the i
 
 ### Why This Matters
 This sets up the key terms (model, training data, features, parameters, training, inference, predictions) you’ll use when learning about neurons and neural networks. It’s like learning the rules of a game before playing it! Understanding these basics helps you see how a neural network learns and makes predictions, which you’ll explore with code like the Python scripts you’ve seen.
+
+
+### Parameters
+The parameters in the context of machine learning models are such as Weights and Biases that are the internal values that are adjusted during training to best fit the data and make accurate predictions.
+
+### Model training proces
+During the training process of a model, the model reduces the difference between its predictions and the intended results, by continuously adjusting its paramateres to minimize the error between its predicted values and the target values from the training data.
+
