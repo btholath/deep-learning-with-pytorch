@@ -7,6 +7,11 @@ Batch Input: Both inputs (10°C, 37.78°C) are processed together in a single te
 Training: The model computes predictions for both inputs, calculates the combined loss, and updates the weight and bias once per iteration.
 Evaluation: Tests the model on a new input (37.5°C) to predict Fahrenheit.
 Why It’s Useful: Introduces batch training, which is more efficient and common in deep learning, and shows how to test a trained model.
+
+What It Does: Trains the neuron with both data points together (batch training) for 150,000 iterations and tests the model on a new input (37.5°C).
+Key Idea: Batch training processes multiple data points at once, which is faster and more common in deep learning, and testing shows how the model generalizes.
+Analogy: Like cooking for a group instead of one person at a time—it’s more efficient.
+Why Last: Introduces advanced batch training and model evaluation, building on prior understanding.
 """
 import torch
 from torch import nn

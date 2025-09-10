@@ -4,6 +4,11 @@ Step-by-Step Explanation:
 Similarities: Like training_neuron2.py, it trains with two data points but runs for fewer iterations (50,000).
 Differences: Slightly different print order (weight before bias) and no final prediction output.
 Why It’s Useful: Reinforces the concept of training with multiple data points, showing consistent results with training_neuron2.py.
+
+What It Does: Similar to training_neuron2.py, but with 50,000 iterations, training on two data points separately.
+Key Idea: Reinforces that training with multiple data points over many iterations refines the neuron’s predictions.
+Analogy: Like revising a drawing multiple times to make it more accurate.
+Why Included: Provides a slightly simpler version of multi-iteration training, reinforcing the concept.
 """
 import torch
 from torch import nn

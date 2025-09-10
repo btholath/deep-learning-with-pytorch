@@ -24,6 +24,11 @@ Shows the bias before and after one update and the prediction for 10°C.
 
 Why It’s Useful: 
 Introduces the core idea of training a neuron with one step, showing how weights and biases change slightly.    
+
+What It Does: Performs one training step with one data point (10°C → 50°F), showing how the neuron’s weight and bias are updated.
+Key Idea: The neuron starts with random weight and bias, makes a prediction, calculates the error (loss), and adjusts to reduce the error.
+Analogy: Like guessing the answer to a math problem, checking how wrong you are, and tweaking your guess to be closer.
+Why Next: Introduces the training process with minimal complexity, focusing on one step.
 """
 
 import torch

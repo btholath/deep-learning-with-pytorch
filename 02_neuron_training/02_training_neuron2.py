@@ -13,6 +13,11 @@ The model learns to make predictions closer to the actual Fahrenheit values.
 
 Output: Prints the weight and bias every 100 iterations and the final prediction for 10°C.
 Why It’s Useful: Shows how repeated training with multiple data points helps the neuron learn better weights and biases (closer to 1.8 and 32).
+
+What It Does: Trains the neuron over 100,000 iterations using two data points (10°C → 50°F, 37.78°C → 100°F), updating weight and bias for each point separately.
+Key Idea: Repeated training with more data helps the neuron learn weight ≈ 1.8 and bias ≈ 32.
+Analogy: Like practicing a free throw in basketball—each shot (iteration) improves your aim (weight/bias).
+Why Follows: Shows how multiple iterations and data points improve accuracy.
 """
 import torch
 from torch import nn
