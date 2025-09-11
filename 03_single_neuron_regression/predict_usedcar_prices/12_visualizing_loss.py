@@ -139,4 +139,9 @@ What role does data visualization play before training a machine learning model?
 Visaulization helps identify patterns, relationships and potential issues in the data.
 By visualizing data, you can spot trends, correlations, and anomalies, which informs data preparation and model choices.
 
+Why is visualizing the loss function important during the training of a neural network?
+It helps monitor the model's learning progress and identify issues like overfitting or poor convergence.
+By visualizing the loss, you can track whether the model's error decreases as expected over training epochs. This helps
+spot problems such as overfitting (if loss diverges on the validation set) or poor convergence (if loss stagnates or oscillates).
+
 """

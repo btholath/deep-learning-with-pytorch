@@ -170,4 +170,7 @@ Denormalizing converts predictions back to the original scale, making them inter
 Predictions are made on a normalized scale for model stability. To understand them in their original context (e.g. dollars or age), they must 
 be scaled back to the original data's units.
 
+To convert model predictions back to the original scale.
+- Multiply the normalized prediction (Z-Score normalization) by the standard deviation, then add the mean.
+
 """
