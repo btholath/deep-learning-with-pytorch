@@ -10,7 +10,7 @@ from torch import nn     # nn = neural network tools from torch
 # ------------------------------------------------------------
 # STEP 1: Read the data from a CSV file (like a spreadsheet)
 # ------------------------------------------------------------
-df = pd.read_csv("./data/used_cars.csv")
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/03_single_neuron_regression/predict_usedcar_prices/data/used_cars.csv")
 
 # ------------------------------------------------------------
 # STEP 2: Prepare the input data (features)
