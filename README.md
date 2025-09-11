@@ -37,3 +37,6 @@ pip install --upgrade jupyterlab jupyter_server notebook nbclassic nbconvert nbf
 
 Then relaunch (step 0).
 Tip: If you only use Classic Notebook UI, ensure nbclassic is installed. If you use Lab, ensure jupyterlab + jupyter_server are consistent.
+
+
+# Pandas
