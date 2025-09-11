@@ -25,3 +25,9 @@ Go back to your notebook tab in VS Code.
 At the top right, click “Select Kernel” (or it may already be prompting you).
 Now you should see “Python (myenv)” or similar.
 Select it, and then Shift+Enter should run your cells.
+
+
+ENV_NAME=$(basename $(dirname $(which python)))
+DISPLAY_NAME="Python ($ENV_NAME)"
+# Step 4: Register this Python as a Jupyter kernel
+echo "📝 Registering kernel as: $DISPLAY_NAME"
