@@ -5,7 +5,7 @@ from torch import nn
 
 
 # Pandas: Reading the data
-df = pd.read_csv("./data/used_cars.csv")
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/03_single_neuron_regression/predict_usedcar_prices/data/used_cars.csv")
 
 # Pandas: Preparing the data
 age = df["model_year"].max() - df["model_year"]
