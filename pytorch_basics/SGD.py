@@ -28,6 +28,11 @@ Now:
     If your lr = 1.0 → you jump too far and overshoot the bullseye (wild learner).
     If your lr is just right → you slowly adjust and hit the bullseye after a few tries.
 
+What was the observed effect when the learning rate was set too low during training?    
+The model stopped learning, as the adjustments were tooooo small to improve results.
+A low learning rate causes the model to make very miminal adjustments to the weights, resulting in slow
+or stalled learning progress. This means the model struggles to reduce the loss effectively, as each
+adjustment is too minor o bring about significant change.
 """
 import torch
 from torch import nn
