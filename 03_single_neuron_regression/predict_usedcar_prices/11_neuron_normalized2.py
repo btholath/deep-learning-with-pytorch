@@ -146,7 +146,17 @@ Each row corresponds to one of the cars you asked about:
     Car B → 2 years old, 10,000 miles → Predicted price ≈ $70,284
     Car C → 5 years old, 20,000 miles → Predicted price ≈ $65,179
 
+    You trained a robot to guess car prices from age and mileage.
 
+When you gave it three new cars, it predicted their prices:
+    The newer car (2 years old) with low mileage is worth the most.
+    The older cars (5 years old) are worth less, especially the one with more mileage.
+This shows the robot learned a pattern:
+    Cars lose value as they get older or get more miles.
+
+So your output is the predicted selling price for each car, according to what your model has learned.
+
+    
 Read & clean the car table.
 Build a feature table X = [age, mileage] and answers y = price.
 Standardize numbers so learning is easier.
