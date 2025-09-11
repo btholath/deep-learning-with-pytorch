@@ -37,7 +37,13 @@ Between -2 and +2, with some outliers possible.
 Z-score normalization centers data around zero and scales it by its standard deviatio, so most values fall between -2 and +2, though some
 outliers may extend beyond this range.
 
+Purpose of Normalizing the input data for a neuron model:
+    to bring input features to a similar scale, allowing uniform learning rates
+Normalizing input data ensures that each feature (like age and mileage) has a similar scale,
+helping the model adjust weights uniformly without needing different learning rates.
 
+When normalizing input data with values like car age (1-20 years) and mileage (1,000-300,000 miles), what is the expected result?
+Both age and mileage are transformed to a similar scale, generally between -2 and 2
 
 """
 
