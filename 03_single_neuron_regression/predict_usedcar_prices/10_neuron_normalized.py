@@ -26,6 +26,12 @@ Why to do?
         - Divide by the standard deviation σ (sigma) of the dataset
     This ensures most data is (mostly) between -2 and 2
 
+
+Purpose of Normalizing the output data in our model:
+    to stabilize learning and allow smoother weight updates
+Normalizing output data brings values into a smaller, controlled range, making learning stable and weight updates smoother. 
+This helps the model avoid large weight adjustments and prevents gradient issues, enabling the neuron to learn effectively.
+
 """
 
 # We are teaching a tiny "robot brain" (a neuron) to guess car prices.
