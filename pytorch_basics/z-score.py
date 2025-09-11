@@ -37,3 +37,14 @@ Z-score normalization answers: “How unusual is this number compared to the gro
 Positive = above average
 Negative = below average
 """
+
+"""
+Given the code below, what steps are needed to perform Z-score normalization on price data stored in variable price?
+    price_mean = price.mean()
+    price_std = price.std()
+    price = (price - price_mean) / price_std
+
+Substract the mean and divide by the standard deviation
+Z-score normalization centers the data by structuring the mean and scaling it by dividing by the standard deviation.
+This step-by-step transformation standarizes the values to a range that stabilizes learning.
+"""
