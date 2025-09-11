@@ -32,6 +32,13 @@ Purpose of Normalizing the output data in our model:
 Normalizing output data brings values into a smaller, controlled range, making learning stable and weight updates smoother. 
 This helps the model avoid large weight adjustments and prevents gradient issues, enabling the neuron to learn effectively.
 
+Given that the price column ranges from 0$ to 300,000$, after normalization, what is the smallest interval in which most values will fall?
+Between -2 and +2, with some outliers possible.
+Z-score normalization centers data around zero and scales it by its standard deviatio, so most values fall between -2 and +2, though some
+outliers may extend beyond this range.
+
+
+
 """
 
 # We are teaching a tiny "robot brain" (a neuron) to guess car prices.
