@@ -163,3 +163,11 @@ Standardize numbers so learning is easier.
 A tiny model learns by guess → check → correct thousands of times.
 Use the trained model to predict prices for new cars, then convert back to dollars.
 """
+
+"""
+Why is it important to denormalize model predictions before interpreting them?
+Denormalizing converts predictions back to the original scale, making them interpretable in real-world terms.
+Predictions are made on a normalized scale for model stability. To understand them in their original context (e.g. dollars or age), they must 
+be scaled back to the original data's units.
+
+"""
