@@ -39,32 +39,3 @@ print(df["label_num"] )
 # 4) Show a few examples of each (so students can see the difference)
 print("Sample HAM messages:\n", df[df["label"] == "ham"]["message"].head(3).tolist(), "\n")
 print("Sample SPAM messages:\n", df[df["label"] == "spam"]["message"].head(3).tolist(), "\n")
-
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report
-
-# Split data
-X_train, X_test, y_train, y_test = train_test_split(
-    df["message"], df["label_num"], test_size=0.2, random_state=42
-)
-
-# Convert text to numbers using TF-IDF
-vectorizer = TfidfVectorizer()
-X_train_vec = vectorizer.fit_transform(X_train)
-X_test_vec = vectorizer.transform(X_test)
-
-# STEP: 5
-# Train the model: here using Logistic Regression
-model = LogisticRegression()
-model.fit(X_train_vec, y_train)
-
-
-# STEP: 6
-# Evaluate using accuracy, precision, recall, F1-score
-# Predict
-y_pred = model.predict(X_test_vec)
-
-# Evaluate
-print(classification_report(y_test, y_pred))
