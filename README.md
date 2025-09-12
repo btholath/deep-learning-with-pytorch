@@ -39,4 +39,67 @@ Then relaunch (step 0).
 Tip: If you only use Classic Notebook UI, ensure nbclassic is installed. If you use Lab, ensure jupyterlab + jupyter_server are consistent.
 
 
-# Pandas
+
+
+# Phase 1 – Explore & Represent Text
+
+explore.ipynb → Explore the SMS dataset, count spam vs ham, peek at examples.
+Idea: “Let’s see what spam looks like!”
+
+cv.py neuron1  → Bag-of-Words with CountVectorizer (word counts → numbers).
+Idea: show how text becomes a table of numbers.
+
+tf-idf.py tf-idf  → TF-IDF representation.
+Idea: explain “important words get bigger weights” (like “prize” vs “the”).
+
+
+# Phase 2 – First Neurons & Sigmoid
+
+sigmoid.ipynb → Simple sigmoid function demo.
+Idea: “How do we turn any number into a probability between 0 and 1?”
+
+neuron1.py
+
+neuron1
+
+ → First linear neuron trained on Bag-of-Words.
+Idea: build the simplest classifier, see it output values before sigmoid.
+
+neuron_sigmoid.py → Show outputs run through sigmoid.
+Idea: predictions become probabilities for spam vs ham.
+
+
+
+# Phase 3 – Training, Testing, Evaluating
+
+neuron_evaluate.py → Train on the whole dataset and evaluate (overfitting).
+Idea: show why evaluating only on training data is misleading.
+
+neuron_train_val.py → Proper train/validation split with metrics.
+Idea: introduce accuracy, precision, recall, specificity.
+
+neuron_test.py → Try predictions on new custom SMS messages.
+Idea: “Can our robot detect spam in real life?”
+
+
+# Phase 4 – Embeddings (Dense Meaning Vectors)
+
+embeddings.py → Extract embeddings from a pretrained model (BART).
+Idea: show how text turns into a dense vector that captures meaning.
+
+embeddings2.py → Wrap embedding extraction into helper functions.
+Idea: organize embeddings neatly for many messages.
+
+neuron_embedding.py → Train a linear classifier using embeddings.
+Idea: compare performance with Bag-of-Words.
+
+_neuron_bart.py → Full pipeline with embeddings + evaluation.
+Idea: put it all together.
+
+
+
+
+# Phase 5 – Transformers
+Script: transformer.py
+Use BERT tokenizer + embeddings.
+Idea: “Here’s the modern upgrade—transformers!” Compare to earlier methods.
