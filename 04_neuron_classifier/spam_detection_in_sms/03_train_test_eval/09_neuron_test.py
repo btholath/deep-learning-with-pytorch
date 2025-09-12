@@ -75,3 +75,17 @@ model.eval()
 with torch.no_grad():
     pred = nn.functional.sigmoid(model(X_custom))
     print(pred)
+
+
+"""
+Bag of Words: each message becomes a row of numbers (word counts).
+Neuron: a simple math machine that learns how much each word hints at “spam.”
+Training loop: guess → check error → adjust → repeat (thousands of times).
+Sigmoid + threshold: turn scores into probabilities, then into yes/no.
+
+Metrics:
+Accuracy = overall correctness
+Sensitivity = how many spam we catch
+Specificity = how many normal messages we keep as normal
+Precision = when we say “spam,” how often we’re right
+"""
