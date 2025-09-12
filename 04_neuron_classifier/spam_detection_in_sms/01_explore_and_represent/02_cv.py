@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 
-df = pd.read_csv("./data/SMSSpamCollection", 
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/04_neuron_classifier/spam_detection_in_sms/data/SMSSpamCollection", 
                  sep="\t", 
                  names=["type", "message"])
 

@@ -3,7 +3,7 @@ from torch import nn
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 
-df = pd.read_csv("./data/SMSSpamCollection", 
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/04_neuron_classifier/spam_detection_in_sms/data/SMSSpamCollection", 
                  sep="\t", 
                  names=["type", "message"])
 
@@ -18,8 +18,8 @@ y = torch.tensor(df["spam"], dtype=torch.float32)\
         .reshape((-1, 1))
 
 model = nn.Linear(1000, 1)
-loss_fn = torch.nn.BCEWithLogitsLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=0.02)
+loss_fn = torch.nn.MSELoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=0.001)
 
 for i in range(0, 10000):
     # Training pass
@@ -29,12 +29,12 @@ for i in range(0, 10000):
     loss.backward()
     optimizer.step()
 
-    if i % 1000 == 0: 
+    if i % 100 == 0: 
         print(loss)
 
 model.eval()
 with torch.no_grad():
-    y_pred = nn.functional.sigmoid(model(X))
+    y_pred = model(X)
     print(y_pred)
     print(y_pred.min())
     print(y_pred.max())

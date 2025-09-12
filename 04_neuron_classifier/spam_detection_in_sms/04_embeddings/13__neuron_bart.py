@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 
 # Load the data
-df = pd.read_csv("./data/SMSSpamCollection", 
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/04_neuron_classifier/spam_detection_in_sms/data/SMSSpamCollection", 
                  sep="\t", 
                  names=["type", "message"])
 
