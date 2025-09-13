@@ -52,3 +52,34 @@ If probability > 0.5 → classify as spam
 Else → classify as ham
 
 """
+
+"""
+Using Sigmoid
+Goal: Predict binary classes
+Challenges with MSE Loss:
+ - Error is too small
+ - Gradients beome small as well
+ - Neuron struggles to learn effectively
+Result
+ - We need a different loss function for better learning
+
+ Problem with MSE Loss
+Let say: y-top = 0.9 and y =1
+using MSE (mean square error) L = (y - y-top)**2 = 0.01
+The error seems deceptively small, leading to minima updates!
+
+So what it means is with Sigmoid activation function, we should not use Mean Square Error (MSE) but instead we should use Binary Cross Entropy (BSE)
+
+The new loss function when using Sigmoid
+- torch.nn.BCEWithLogitsLoss:
+    - BCE: Binary Cross Entropy
+    - WithLogits: Also applies the sigmoid function before
+
+BCE loss
+y-top = predicted y value
+L = y * log(sigmoid function of y-top) + (1- True y value) * log(1- sigmoid function of y-top)
+
+
+
+
+"""
