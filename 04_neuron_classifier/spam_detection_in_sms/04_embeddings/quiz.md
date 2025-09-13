@@ -63,3 +63,8 @@ Counts how frequently a term appears in a single document
 
 Formula:
 TF(t,d) = Number of times term t appears in a document d / Total number of terms in document d
+
+
+TF-IDF = TF × IDF
+High value = word appears often in one document but rarely in others (important, unique).
+Low value = word is common everywhere (not useful for distinguishing documents).
