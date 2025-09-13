@@ -47,3 +47,19 @@ This format is particularly useful for handling large datasets where many token 
 Which parameter of Count Vectorizer limits the number of words it examines?
 max_features - The max_features parameter of Count Vectorizer specified the maximum number of most frequently occuring words to consider when transforming text into
 token counts, adding in focusing the model on the most relevant features.
+
+TF-IDF - Term Frequency – Inverse Document Frequency.
+It’s a way to measure how important a word is in a document (message, email, review, etc.) compared to the whole collection of documents.
+Counts how frequently a term appears in a single document
+
+1. TF (Term Frequency)
+- Counts how often a word appears in a document.
+- Example: In "Free money now free", the word free appears 2 times out of 4 words → TF(free) = 2/4 = 0.5
+
+2. IDF (Inverse Document Frequency)
+- Measures how unique or rare a word is across all documents.
+- If a word appears in every document (like “the” or “and”), its IDF is small → not important.
+- If it appears in only a few documents, its IDF is high → very important for those docs.
+
+Formula:
+TF(t,d) = Number of times term t appears in a document d / Total number of terms in document d
