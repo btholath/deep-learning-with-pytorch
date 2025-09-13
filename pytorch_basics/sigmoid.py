@@ -79,6 +79,14 @@ BCE loss
 y-top = predicted y value
 L = y * log(sigmoid function of y-top) + (1- True y value) * log(1- sigmoid function of y-top)
 
+Heads-up:
+ - The output of the neuron is still linear
+ - The sigmoid activation function became part of the loss function:
+    - Simplifies mathematical calculations
+    - Improved numerical stability
+ - During prediction:
+    - Apply Sigmoid function
+      
 
 
 
