@@ -15,7 +15,12 @@ How does the sigmoid activation function affect the output of a spam detection m
 It maps the model's output to a probability scale betweeb 0 and 1, indicating the likehood of spam
 
 
+What is the purpose of using validation data in machine learning models like spam detection?
+To tune model hyperparameters and prevent overfitting, ensuring the model performs well on unseen data.
 
+What role does model evaluation play at the end of a spam detection project ?
+To verify the model's performance on unseen data and ensure it generalizes well.
+Model evaluation test the trained model against new, unseen data to assess its effectiveness outside of the training environment.
 
 
 
