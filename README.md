@@ -123,3 +123,17 @@ Finally, include the following command to calculate and display the total time:
 
 print(f'It takes: {t_end - t_start}s for this program to finish.')
 This will allow you to see how your chosen hyperparameters impact the training duration.
+
+
+What is the primary purpose of converting message data into tensors before training the model?
+To mae the data compatible with PyTorch for model training
+Tensors are the primary data structure used in PyTorch, and converting data into this format ensures it can be effectively processed  and manipulated during model training.
+
+
+What is the role of the sigmoid activation function in a neuron model?
+To map the neuron's linear output to a range between 0 and 1, suitable for represneting probabilities.
+The sigmoid function compresses outputs to the 0-1 interval, which is crucial for tasks that interpret these outputs as probabilities, such as in binary classification.
+
+Referring to the provided graph of the sigmoid function, how does it respond to extreme input values?
+It approaches 0 for negative inputs and 1 for positive inputs, effectively squashing extreme to the edges of the 0-1 range.
+As seen in the graph, the sigmoid function's S-shaped curve shows that as the input values becomes extremely negative or positive, the functions's output asymptotically approaches the limit of 0 and 1 respectively. This characteristic ensures that all outputs are bounded within the 0 to 1 range, making it suitable for probablitity models.
