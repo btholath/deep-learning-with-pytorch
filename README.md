@@ -103,3 +103,23 @@ Idea: put it all together.
 Script: transformer.py
 Use BERT tokenizer + embeddings.
 Idea: “Here’s the modern upgrade—transformers!” Compare to earlier methods.
+
+
+
+
+Optimizing Training for Our Neuron Classifier
+When evaluating the neuron model, experimenting with reducing training iterations and increasing the learning rate can help reduce the time required to run the code. For example, training iterations can be reduced to 25,000, and the learning rate can be increased to 0.05.
+
+To measure the time taken for training, the time library can be used. Start by importing it with the command:
+
+import time
+Then, create a timestamp at the beginning of the code:
+
+t_start = time.time()
+and another timestamp at the end:
+
+t_end = time.time()
+Finally, include the following command to calculate and display the total time:
+
+print(f'It takes: {t_end - t_start}s for this program to finish.')
+This will allow you to see how your chosen hyperparameters impact the training duration.
