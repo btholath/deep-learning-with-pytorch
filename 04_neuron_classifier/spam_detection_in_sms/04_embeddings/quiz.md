@@ -22,6 +22,11 @@ What role does model evaluation play at the end of a spam detection project ?
 To verify the model's performance on unseen data and ensure it generalizes well.
 Model evaluation test the trained model against new, unseen data to assess its effectiveness outside of the training environment.
 
+Which metrics are commonly used to evaluate a spam detection model?
+Accuracy, sensitivity, specficity and precision
+These metrics provide a comprehensive assessment of model performance, measuring correct classifications, and the ability to
+detect positive and negative instances correctly.
+
 
 
 
