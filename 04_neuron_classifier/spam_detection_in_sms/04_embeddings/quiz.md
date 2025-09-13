@@ -29,5 +29,21 @@ detect positive and negative instances correctly.
 
 
 
+What is the primary goal of developing a neuron for binary classification in spam detection?
+To filter out spam messages
+The main objective of developing a neuron for binary classification in spam detection is to correctly identify and filter out spam messages
+from legitimate ones, improving the usability and security of messaging platforms.
 
 
+Which of the following is a crucial step in preparing data for a spam classifier?
+Converting textual data into a numerical format.
+For a machine learning model to process and learn from textual data, it must first be converted into a numerical format, which is a crucial step for training spam classifiers.
+
+What is the primary function of the Count Vectorizer in text data preprocessing?
+To convert text into a sparse matrix of token counts.
+Count Vectorizer transforms a collection of text documents into a sparse matrix of token counts, efficiently representing the frequency of tokens in each document.
+This format is particularly useful for handling large datasets where many token counts are zero, allowing the model to process and analyze text data effectively.
+
+Which parameter of Count Vectorizer limits the number of words it examines?
+max_features - The max_features parameter of Count Vectorizer specified the maximum number of most frequently occuring words to consider when transforming text into
+token counts, adding in focusing the model on the most relevant features.
