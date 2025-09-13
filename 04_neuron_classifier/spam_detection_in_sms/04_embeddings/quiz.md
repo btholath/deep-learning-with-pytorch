@@ -61,10 +61,18 @@ Counts how frequently a term appears in a single document
 - If a word appears in every document (like “the” or “and”), its IDF is small → not important.
 - If it appears in only a few documents, its IDF is high → very important for those docs.
 
-Formula:
+Term-Frequency Formula:
 TF(t,d) = Number of times term t appears in a document d / Total number of terms in document d
 
 
 TF-IDF = TF × IDF
 High value = word appears often in one document but rarely in others (important, unique).
 Low value = word is common everywhere (not useful for distinguishing documents).
+
+
+Inverse document frequency Formula:
+To avoid division by zero, we can add a smoothing factor
+IDF(t,D) = log ( 1+ total number of documents / 1 + number of documents containing the term t))
+
+So combining both TF and IDF, and the end result is that TF-IDF prioritizes important, rare words over frequently occuring , less meaningful words.
+TFIDF(t,d,D) = TF(t,d) * IDF(t,D)
