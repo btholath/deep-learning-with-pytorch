@@ -138,3 +138,11 @@ Referring to the provided graph of the sigmoid function, how does it respond to 
 It approaches 0 for negative inputs and 1 for positive inputs, effectively squashing extreme to the edges of the 0-1 range.
 As seen in the graph, the sigmoid function's S-shaped curve shows that as the input values becomes extremely negative or positive, the functions's output asymptotically approaches the limit of 0 and 1 respectively. This characteristic ensures that all outputs are bounded within the 0 to 1 range, making it suitable for probablitity models.
 
+# Loss Functions and Evaluation Metrics in Spam Detection
+Implementation and impact of loss functions and metrics in spam detection models. Dive into why Mean Squared Error (MSE) is unsuitable for models using sigmoid activation, explore the advantages of Binary Cross Entropy (BCE) with logits loss, and learn how sensitivity is accurately calculated in spam detection.
+
+Why is mean squared error (MSE) not suitable for training a binary classification model using a sigmoid activation function?
+MSE can result in very small gradients when the predicted output is close to the target class, making learning inefficeint.
+MSE is not ideal because as the predicted probability nears the acual class 0 or 1, the gradient of the loss with respect to the prediction becomes smaller.
+This can slow down or even halt learning due to insufficeint updates to the weights.
+
