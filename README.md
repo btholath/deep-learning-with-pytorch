@@ -146,3 +146,10 @@ MSE can result in very small gradients when the predicted output is close to the
 MSE is not ideal because as the predicted probability nears the acual class 0 or 1, the gradient of the loss with respect to the prediction becomes smaller.
 This can slow down or even halt learning due to insufficeint updates to the weights.
 
+What is the primary advantage of using Binary Cross Entropy (BCE) with logits loss over MSE in a model using sigmoid activation?
+BCE with logits integrates the sigmoid activation directly into the loss calculation, which helps in managing issues with vanishing gradients.
+
+How is sensitivity (true positive rate) calculated in a spam detection model?
+Sensitivity measures how well the spam detection model identifies actual spam messages. It is specifically calculated by dividing the number or spam messages correctly
+identified by the model *true positives) by the total number of atual spam messages, which includes both true positives and false negatives.
+
