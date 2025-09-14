@@ -153,3 +153,20 @@ How is sensitivity (true positive rate) calculated in a spam detection model?
 Sensitivity measures how well the spam detection model identifies actual spam messages. It is specifically calculated by dividing the number or spam messages correctly
 identified by the model *true positives) by the total number of atual spam messages, which includes both true positives and false negatives.
 
+# Data Segmentation in Model Development
+Understanding of the critical distinctions and purposes behind dividing data into training, validation, and test sets in artificial intelligence model development. You'll test your knowledge on why it’s essential to separate these datasets to prevent overfitting, ensure unbiased evaluation, and maintain the integrity of the model tuning process. This quiz will help solidify your grasp of how structured data management contributes to building robust, generalizable AI models.
+
+What is the purpose of dividing data into training, validation and test sets in model development?
+To ensure that the model is trained, validated and tested on different segments of data to avoid overfitting and to evaluate the moel's performance on unseen data.
+The training set is used to fir the model, the valiation set is used to fine-tune the model parameters and select the best model architecture, and the test set is used to provide an unbiased evaluation of a final model fit on the training dataset.
+
+
+Why is it important to keep the validation data separate from the training data?
+To prevent data leakaga and ensure that the model tuning is based on unbiase data, which helps in genuinely evaluating the model's ability to generalize
+Keeoing the validation data separate prevents the model from seeing this data during training, thereby providing a reliale way to check for overfitting and to tune the model's hyperparameters without bias.
+
+What is the role of test data in model evaluation?
+To assess the model's final performance on completely unseen data, providing an unbiased evaluation of its generalization ability.
+Test data is used after the model has been trained and validated to measure how well it can perform on new, unseen data, reflecting its potential real-world performance.
+
+
