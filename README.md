@@ -170,3 +170,22 @@ To assess the model's final performance on completely unseen data, providing an 
 Test data is used after the model has been trained and validated to measure how well it can perform on new, unseen data, reflecting its potential real-world performance.
 
 
+# Enhancing Detection with LLM Embeddings
+applying large language model (LLM) embeddings to boost spam detection accuracy. It covers the generation of embeddings with the BART model, the functionality of embedding conversion and the impact of LLM embeddings on spam filtering models. Dive into how these advanced techniques enhance the model's ability to interpret and classify text, providing a robust defense against evolving spam tactics.
+
+What is the advantage of using embeddings from a large language model (LLM) for spam detection?
+Embeddings capture the semantic meaning of texts, improving the model's ability to detect spam in varied and novel message forms.
+By capturing deeper semantic meanings, embeddings allow the spam filter to recognize spam characteristics beyond basic keyword matching, adapting to new and unseen message types.
+
+How are embeddings generated using the BART model in spam detection?
+The BART model tokenizes the text and uses its layers to produce embeddings that capture contextual information from the input
+The BART model processes tokenized text through multiple layers, generating embeddinhs that represemt the text in a meaniful, contextually enriched numerical format,
+
+What is the purpose of the convert_to_embeddings() function in the context of LLMs?
+To transform text messages into numerical embeddings using a pre-trained BART model, facilitating more effective spam detection
+This function streamlines the process of converting text to embeddings, making it easier to integrate advanaced language model outputs into spam detection systems.
+
+How does integrating embeddings from an LLM improve spam detection models?
+Embeddings provide a deep semantic understaning of text, allowing the model to detect spam based on the underlying meaning rather than just surface features
+By utilizing embeddings, spam detection models can more effectively identify spam messages that may not fit traditional patterns, increasing both accuracy and adaptability.
+
