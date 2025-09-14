@@ -307,3 +307,85 @@ Options: sigmoid, relu, tanh, softmax
 sigmoid
 The sigmoid function is essential in binary classification because it maps any input value to a probability between 0 and 1, ideal for distinguishing between two classes. This feature allows outputs to be directly interpreted as probabilities, facilitating clear decision-making based on a threshold, typically 0.5, to classify inputs as one class or another.
 
+
+# Single Neuron Regression
+What impact does removing outliers have on a regression model predicting used car prices?
+It can help improve the model’s generalization by focusing on more typical data points
+Removing outliers may help the model perform better on typical data by reducing the influence of anomalies.
+
+Which feature is likely to have a higher influence on the price prediction in a used car dataset?
+Mileage of the car
+Mileage directly relates to the car's condition and usage, significantly impacting its market value.
+
+
+In the context of used car prices, what would be a likely target variable for the model?
+Note: The target variable is the variable that the model is designed to predict.
+The price of the car
+The price is the outcome variable that the model aims to predict.
+
+Given the plot showing mileage on the x-axis and price on the y-axis, what trend does this plot suggest about the relationship between mileage and used car prices?
+Prices decrease as mileage increases
+This is a common trend where higher mileage often correlates with lower prices due to increased wear and decreased desirability.
+
+
+Given the following PyTorch code:
+
+import torch
+# Sample input data
+age = torch.tensor([10, 20, 30], dtype=torch.float32)
+mileage = torch.tensor([5000, 15000, 25000], dtype=torch.float32)
+ 
+# Combine age and mileage into a tensor
+X = torch.column_stack([
+    torch.tensor(age, dtype=torch.float32),
+    torch.tensor(mileage, dtype=torch.float32)
+])
+ 
+X_mean = X.mean(axis=0)
+X_std = X.std(axis=0)
+X = (X - X_mean) / X_std
+What does the final tensor X contain?
+
+A tensor with normalized values based on the mean and standard deviation of each column
+The tensor X is updated such that each value is adjusted relative to the mean and scaled by the standard deviation of its respective column.
+
+
+Please fill the blank field(s) in the statement with the right words.
+For robust model training, ensuring that data is balanced or uniformly scaled across all input __ is vital to prevent bias in the deep learning algorithm.
+Options: labels, segments, features, nodes
+features
+Uniform scaling or balancing prevents any one feature from dominating the model's decision process due to scale differences.
+
+
+What metrics are suitable for evaluating a used car price prediction model?
+Note: The target variable for prediction in this model is numerical (price).
+Root Mean Squared Error (RMSE)
+RMSE provides a clear indication of the average error magnitude, making it suitable for regression problems.
+
+Mean Absolute Error (MAE)
+MAE is another important regression metric that measures the average magnitude of errors in predictions, without considering their direction.
+
+
+What does the term model normalization refer to in the context of predicting used car prices?
+Scaling input features to a similar range
+Normalization makes training more effective by ensuring that all features contribute proportionately.
+
+What factors should be considered when selecting features for a model predicting used car prices?
+Car mileage
+Mileage is a critical determinant of a car's value, as it directly relates to wear and usage.
+Number of previous owners
+The number of previous owners can affect a car's market value, as fewer owners may suggest better maintenance and reliability.
+
+What is the primary objective of using a single neuron model in predicting used car prices?
+To predict prices based on vehicle age and miles driven
+The model's goal is to use regression to predict prices from features like age and mileage.
+
+
+Please fill the blank field(s) in the statement with the right words.
+Effective handling of __ and categorical data is crucial for training accurate machine learning models, especially when predicting values like used car prices.
+Options: textual, numerical, visual, audio
+numerical
+Proper management and processing of both numerical and categorical data ensure that the models are based on comprehensive and correctly formatted inputs.
+
+
+
