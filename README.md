@@ -388,4 +388,177 @@ numerical
 Proper management and processing of both numerical and categorical data ensure that the models are based on comprehensive and correctly formatted inputs.
 
 
+Please fill the blank field(s) in the statement with the right words.
+A common metric used to evaluate the accuracy of regression models in predicting car prices is mean __ error.
+Options: absolute, logarithmic, squared, cumulative
+squared
+MSE quantifies the average of the squares of the errors, which is the average squared difference between the estimated values and what is estimated.
 
+What type of machine learning problem is predicting used car prices?
+Regression
+Regression predicts a continuous variable, suitable for price prediction.
+
+Which type of data visualization would be most helpful for identifying the relationship between car age and its price?
+Scatter plot
+Scatter plots are excellent for visualizing relationships between two continuous variables, showing how one variable behaves relative to another.
+
+
+
+# Neuron Training
+Please fill the blank field(s) in the statement with the right words.
+The __ function helps the neuron model by indicating where to adjust parameters.
+Options: loss, cost, reward, error
+loss
+The loss function provides a measure of error that guides how the neuron's parameters should be adjusted to improve predictions.
+
+What does the gradient represent in the context of training a neuron?
+The rate of change of the loss with respect to the parameters
+The gradient shows how a small change in parameters affects the loss, guiding how they should be adjusted.
+
+What outcomes indicate the need for adjustments in the learning process of a neuron?
+Predictions are consistently too high or too low
+This suggests that the parameters are not correctly tuned to the data.
+Loss function value remains high or increases
+A high or increasing loss function value suggests that the model is not fitting the data well and needs parameter adjustment.
+
+
+What is the primary purpose of learning in a neuron model?
+To adjust the bias and weights based on input data
+Learning allows the neuron to automatically adjust its parameters (bias and weights) to better fit the data.
+
+
+What analogy is used to describe the parameter adjustment process in a neuron?
+A DJ adjusting volume knobs
+The DJ analogy is used to explain how parameters (like volume knobs) are adjusted to achieve the best output.
+
+How does a neuron model initially determine its parameter values?
+Through a randomized process
+Parameters such as weights and biases are initially set through a randomized process before training.
+
+
+Which method does a neuron use to learn the conversion formula from Celsius to Fahrenheit?
+Trial and error using feedback
+The neuron iteratively adjusts its parameters based on error feedback to learn the conversion.
+
+What factors are crucial for a neuron's ability to learn effectively?
+An appropriate learning rate
+The learning rate must be appropriately set to ensure efficient learning without overshooting.
+Adequate training data
+Sufficient and relevant training data is essential for effective learning.
+
+
+Please fill the blank field(s) in the statement with the right words.
+Effective neuron training requires the adjustment of __ and bias based on feedback from the loss function.
+Options: weights, parameters, variables, coefficients
+weights
+Training involves modifying parameters in response to how much error is indicated by the loss function to reduce that error over time.
+
+Which steps are involved in training a neuron model to predict temperatures?
+Adjusting parameters based on error
+Parameters are adjusted iteratively based on the error between predicted and actual temperatures.
+Initializing parameters randomly
+Parameters are initially set randomly before being adjusted through training.
+
+
+
+Please fill the blank field(s) in the statement with the right words.
+The __ rate in neuron training affects how quickly or slowly parameters are adjusted during the learning process.
+Options: update, learning, improvement, training
+learning
+The learning rate determines the magnitude of each step in parameter adjustment, affecting the speed of convergence.
+
+
+Please fill the blank field(s) in the statement with the right words.
+To minimize the prediction error, a neuron's parameters are optimized using a process called __ descent.
+Options: stochastic, adaptive, incremental, gradient
+gradient
+Gradient descent is the optimization algorithm used to adjust parameters in a direction that reduces prediction error.
+
+
+In the context of neuron learning, what is the role of the mean squared error (MSE)?
+It measures the performance of the neuron by quantifying prediction error
+MSE quantifies how far the neuron's predictions are from the actual values, serving as a performance metric.
+
+Which outcomes indicate successful training of a neuron?
+The loss function value decreases over time
+Decreasing loss values suggest the neuron is effectively learning from the training data.
+The model's predictions improve over time
+Successful training should lead to better predictions as the neuron learns patterns from the data and optimizes its parameters.
+
+
+What happens if the learning rate is too low during neuron training?
+The neuron may not learn effectively, leading to slow convergence
+A low learning rate can cause the training to progress very slowly, potentially not converging at all.
+
+
+# Foundations of Neural Networks
+Please fill the blank field(s) in the statement with the right words.
+__ in a neuron are adjusted during training to control how much influence each input feature has on the output.
+Options: Biases, Activations, Weights, Layers
+Weights
+Weights are critical in determining the significance of each input feature on the neuron's output, effectively scaling inputs based on their relevance.
+
+What does inference in machine learning refer to?
+Applying the model to new data
+Inference is the process of using a trained model to make predictions on new, unseen data.
+
+What is meant by parameters in a machine learning context?
+Adjustable values within a model
+Parameters are the model's internal settings (like weights and biases) that are learned and adjusted through training to optimize performance.
+
+
+Neurons have inputs, weights and a bias
+A typical neuron in a neural network receives multiple inputs, each weighted differently and a bias term that adjusts the output threshold.
+Neurons output a single value as a prediction
+Typically, each neuron computes a single output value based on its inputs, weights and bias, which may then be passed on to subsequent layers in the network.
+
+
+Please fill the blank field(s) in the statement with the right words.
+The dataset used to teach a model to predict is called __ data.
+Options: training, validation, testing, historical
+training
+Training data is used to adjust the model's parameters and is thus fundamental to the model's ability to learn and make accurate predictions.
+
+
+In the context of a simple neuron, what does the bias term do?
+Shifts the output function for better fit
+The bias term helps to shift the activation function, adjusting the threshold at which the neuron activates, thereby aiding in better data fitting.
+
+What is the role of weights in a neural network neuron?
+To scale input features contributing to the output
+Weights determine the importance or influence of each input feature on the output, effectively scaling the input data as it contributes to the neuron's output.
+
+
+Which components are integral to the deep learning process?
+Features
+Features are the variables within the training data that models use to learn and make predictions.
+Training data
+Training data is fundamental for teaching the model how to make predictions, as it provides the actual examples the model learns from.
+
+
+Which elements can affect a neuron's prediction?
+Input values
+The input values fed into a neuron significantly influence its output, as the neuron processes these inputs through its weighted sum and bias.
+Bias and weights
+The weights and bias are crucial parameters within a neuron that determine how input values are transformed into an output.
+
+
+Please fill the blank field(s) in the statement with the right words.
+A model learns to adjust its __ to reduce the error between its predictions and actual results.
+Options: configurations, parameters, settings, hyperparameters
+parameters
+Parameters like weights and biases are tuned during training to minimize the discrepancy between predicted outcomes and actual data points.
+
+What type of data do models primarily learn from?
+Training data
+Training data is the main dataset used to train and teach the model how to recognize patterns and make predictions.
+
+Which of the following is a crucial part of a model's training data?
+Features
+Features are the distinct attributes or variables in the training data that the model uses to learn and make predictions.
+
+
+Please fill the blank field(s) in the statement with the right words.
+In neural networks, the __ term can shift the activation function, affecting the output.
+Options: weights, gradient, threshold, bias
+bias - The bias term allows for adjustments to the activation function's threshold, which shifts the function along the output axis, impacting the neuron's activation and output.
