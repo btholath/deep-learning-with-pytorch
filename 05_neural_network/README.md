@@ -69,3 +69,13 @@ nn.Sigmoid() → layer object (module).
     Merit: Fits inside Sequential, model structure is clear; easy to save/load
     Demerit: Slightly longer to write; must create a layer object
     Module sigmoid: Like owning a calculator and keeping it in your toolbox (so everyone knows it’s part of your kit).
+
+
+# Neural Network Application Techniques
+Critical techniques in applying neural networks effectively using PyTorch. You will explore the significance of preparing models for reliable predictions and the benefits of structuring your network with nn.Sequential.
+
+What is the primary purpose of setting a model into evaluation mode before applying it?
+To disable training-specific operations, ensuring consistent behavior during predictions.
+When a model is set to evaluation mode, it deactivates features such as dropout and batch normalization that are only relevant during the training phase. This ensures that the model's behavior is stable and predictible when making predictions, as these features can introduce randomness and variability that are undesirable during the evauation or application of the model.
+
+
