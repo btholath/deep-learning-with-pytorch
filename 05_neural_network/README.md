@@ -21,3 +21,29 @@
  It allows the network to optimize weight adjustments for improved accuracy
  Backpropagation effetively helps in minimizing the loss function, leading to better model performance and accuracy over training iterations.
  
+ # Optimizing Training for Our Neural Network Classifier
+If training a neuron with 500,000 iterations takes too long, try reducing the number of iterations to 250,000 and increasing the learning rate, for example, to 0.025.
+
+When working with networks, it is possible to get stuck in local minima for several iterations or more due to the random initialization of weights and biases. If the loss does not decrease for a significant portion of the iterations, rerunning the model might help. This issue depends on factors such as the number of training iterations, the learning rate, activation functions and the optimizer. To resolve it, experiment with these parameters until a working solution is found.
+
+For this specific dataset, a good configuration to try is 300,000 iterations, a learning rate of 0.01, the Adam optimizer and the ReLU activation function.
+
+Adding mini-batches to the training process can also significantly reduce the time required compared to the initial setup.
+
+If you are not satisfied with the accuracy and observe that the loss is still decreasing, you can train the model for more iterations. The exact number will depend on how long you are willing to train and the level of accuracy you aim to achieve.
+
+
+# Data Analysis and Neural Network Training
+practical aspects of data analysis, where you'll explore the relationship between student study habits, exam scores and outcomes. Additionally, assess your grasp of how neural networks are structured and implemented to improve predictions. 
+
+What is the primary purpose of examining student exam data?
+To identify relationships between study hours, exam scores and outcomes
+Analyzing this data helps pinpoint how variables like hours spent studying and scores on previous exams influence whether students pass or fail.
+
+What is the function of the hidden layer in a neural network?
+To identify more complex patterns in the input data for improved predictions.
+The hidden layer processes inputs through its neurons, which are capable of detecting intricate patterns and relationships that are not immediately apparent, aiding in more accurate predictions.
+
+Why is the sigmoid function applied at the output layer in the neural network model?
+To convert the networtk output into probability values for binary classification
+The sigmoid function maps linear outputs to a [0,1] range, ideal for binary outcomes like pass/fail predictions.
