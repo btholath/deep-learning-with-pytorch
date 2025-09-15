@@ -171,46 +171,65 @@ print("Output layer bias shape    (1,)    :", output_model.bias.shape)
 # The forward pass is computed step-by-step.
 print("Training the network...")
 for i in range(0, 500000):
-    # 1. Zero the gradients before the forward pass.
+    # 1. Zero the gradients before the forward pass. (start fresh: clear old gradient notes)
     optimizer.zero_grad()
     
     # 2. Manual Forward Pass:
+    # Step 1: Hidden linear mix of the 2 inputs → 10 hidden values
     # Compute the output of the first linear layer.
     outputs = hidden_model(X)
 
+
+    # Step 2: Activation function (Sigmoid)
+    # WHY: It bends the line into an S-shape so the network can learn
+    # non-linear patterns (not just straight lines). Try commenting it out
+    # to see learning get worse!
     # Apply the non-linear activation function.
     outputs = nn.functional.sigmoid(outputs)
 
+    # Step 3: Output layer: turn 10 hidden values into 1 raw score (logit)
     # Compute the output of the second linear layer.
     outputs = output_model(outputs)
 
+    # LOSS: "How wrong are we?" (compares logits vs true labels y)
     # 3. Calculate the loss.
     loss = loss_fn(outputs, y)
 
+    # BACKWARD: compute how each weight should move to reduce loss
     # 4. Perform backpropagation to compute gradients.
     loss.backward()
 
+    # STEP: move weights a tiny bit (learning!)
     # 5. Update the parameters using the optimizer.
     optimizer.step()
 
     # Print the loss periodically to monitor training progress.
     if i % 10000 == 0:
-        print(loss)
+        print(f"step {i:>6} | loss = {loss.item():.6f}")
 
 
+# 7) EVALUATION (NO LEARNING, JUST TESTING) ---------------------------------
+# We switch to eval mode (good habit; some layers behave differently in eval).
 # Evaluation
 # Set the models to evaluation mode to disable layers like dropout.
 hidden_model.eval()
 output_model.eval()
 
+
+# no_grad: we’re only doing math to SEE results; no training now.
 # Disable gradient calculation for inference.
 with torch.no_grad():
+    # Forward pass again (same as above), but no optimizer/gradients.
+
     # Manual forward pass for evaluation.
     outputs = hidden_model(X)
-    outputs = nn.functional.sigmoid(outputs)
-    outputs = output_model(outputs)
+    outputs = nn.functional.sigmoid(outputs)  # keep the activation for hidden layer
+    outputs = output_model(outputs)           # final raw scores
 
     # Apply a final sigmoid and threshold to get binary predictions.
+    # For probabilities (0..1), NOW we apply sigmoid to the final logits.
+    # Turn probability into a yes/no prediction:
+    # > 0.5 means "predict pass (1)", else "predict fail (0)".
     y_pred = nn.functional.sigmoid(outputs) > 0.5
 
     # Compare predictions to the actual labels.
@@ -218,3 +237,6 @@ with torch.no_grad():
 
     # Calculate and print the final accuracy.
     print(y_pred_correct.type(torch.float32).mean())
+    
+    accuracy = y_pred_correct.type(torch.float32).mean().item()
+    print("accuracy:", accuracy)
