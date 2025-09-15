@@ -81,3 +81,20 @@ with torch.no_grad():  # we’re not learning now; this makes it faster/safer
     # Compare predictions to the real answers and compute accuracy.
     accuracy = (preds.float() == y).float().mean().item()
     print("accuracy:", accuracy)
+
+
+"""
+What each part teaches (talking points)
+    Inputs → Hidden → Output: hidden neurons learn useful combos like “studied a lot AND had a good prior score.”
+    ReLU: speeds up learning by passing positive signals and zeroing negatives.
+    Logits & Sigmoid: model works in raw scores (logits) for math stability; at the end we use sigmoid to get a probability (0..1).
+    Loss & Backprop: loss = “how wrong”; backprop = “how to fix weights.”
+    Optimizer: the “coach” that nudges weights a tiny bit each step.
+    Accuracy: a simple score students understand immediately.
+
+Easy experiments for students
+    Change the learning rate (e.g., 0.001, 0.02) and see if loss goes down faster or slower.
+    Change the hidden size (10 → 3 or 20) and see how accuracy changes.
+    Try a different threshold (0.4 or 0.6) to see effects on predictions.
+    Shuffle/split into train/validation to be fair (train on some rows, test on unseen rows).
+"""
