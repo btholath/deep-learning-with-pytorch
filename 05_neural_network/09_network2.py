@@ -1,14 +1,22 @@
 """
 network1.py & 9) network2.py — Build two-layer net “by hand”
 
-Concept: What Sequential does under the hood.
-Purpose: Demystify layer-by-layer forward pass and parameter lists.
-Teaching Approach: Unplug the LEGO and wire each block yourself.
-Explain: “Compute hidden = Linear → Sigmoid → Linear → Logits.”
-Activity: Print hidden_model.weight.shape, etc.
-Code Focus: Two separate modules, manual forward pass, shared optimizer.
-Engagement: Comment out the activation and see what happens.
-Why this order: Great capstone—after convenience tools, see the gears.
+BIG PICTURE:
+We will build a small brain with TWO steps (layers):
+  1) Hidden layer: mixes the inputs into 10 hidden "ideas"
+  2) Output layer: turns those ideas into a single score
+
+WHY DO THIS BY HAND?
+- Usually we use nn.Sequential (like snapping LEGO blocks together).
+- Here we plug each piece ourselves so we can SEE the gears turning:
+    hidden = Linear(2 -> 10) -> Sigmoid
+    logits = Linear(10 -> 1)
+- Then we compute loss, backprop, and update weights.
+
+REAL-WORLD ANALOGY:
+- Inputs could be "Study Hours" + "Previous Exam Score".
+- Output is "Will pass the exam?" (1 = yes, 0 = no).
+- The same recipe powers spam filters, recommendations, and more.
 
 Summary of Neural Network Architecture in the Code
 Overview:
@@ -84,37 +92,70 @@ import torch
 from torch import nn
 import pandas as pd
 
+# 1) LOAD DATA ---------------------------------------------------------------
 # Load the data from a CSV file.
+# We read a small table where each row is a student.
+# Columns:
+#   - "Study Hours" (how long they studied)
+#   - "Previous Exam Score" (last score)
+#   - "Pass/Fail" (1 = pass, 0 = fail) → this is what we want to predict
 df = pd.read_csv("/workspaces/deep-learning-with-pytorch/05_neural_network/data/student_exam_data.csv")
 
 
+# 2) MAKE TENSORS ------------------------------------------------------------
 # Prepare the data tensors for the network.
 # X is the input data (Study Hours, Previous Exam Score).
-# y is the target data (Pass/Fail).
+# X (inputs) must be floating-point numbers for the model.
+# Shape: [num_students, 2] because we have 2 input features.
 X = torch.tensor(
     df[["Study Hours", "Previous Exam Score"]].values, 
     dtype=torch.float32
 )
+# y is the target data (Pass/Fail).
+# y (targets) is also a float tensor with shape [num_students, 1].
+# We reshape to a COLUMN vector so each row matches one student.
 y = torch.tensor(df["Pass/Fail"], dtype=torch.float32)\
     .reshape((-1, 1))
 
 
+# 3) BUILD LAYERS BY HAND ----------------------------------------------------
 # Define the network layers as separate modules.
-# hidden_model: A linear layer that takes 2 inputs and outputs 10 hidden units.
-# output_model: A linear layer that takes the 10 hidden units and outputs 1 result.
+# hidden_model: A linear layer that takes 2 inputs and outputs 10 hidden features out.
+# Think of these as 10 tiny detectors learning useful combos like
+# "studied a lot AND last score was high".
 hidden_model = nn.Linear(2, 10)
+
+# output_model: A linear layer that takes the 10 hidden features and outputs 1 result.
+# Output layer: takes those 10 hidden features → makes 1 final score (logit).
+# "Logit" means a raw score that we will later squash to 0..1 with sigmoid
+# ONLY when we want a probability for evaluation.
 output_model = nn.Linear(10, 1)
 
+
+# 4) CHOOSE LOSS (HOW WRONG ARE WE?) ----------------------------------------
+# BCEWithLogitsLoss is perfect for yes/no questions (binary classification).
+# It expects raw scores (logits) from the final layer (no sigmoid before it).
 # Define the loss function. `BCEWithLogitsLoss` combines a sigmoid activation
 # and binary cross-entropy, which is numerically more stable.
 loss_fn = torch.nn.BCEWithLogitsLoss()
 
+
+# 5) TELL THE OPTIMIZER WHICH KNOBS (PARAMETERS) TO TURN --------------------
+# We combine BOTH layers' parameters so one optimizer updates everything.
 # Manually create a single list of all parameters from both layers.
 # This is crucial for the optimizer to be able to update all weights and biases.
 parameters = list(hidden_model.parameters()) + list(output_model.parameters())
 
+# Optimizer = the "coach" that tweaks weights after each learning step.
+# lr = learning rate (how big each tweak is). Small = careful; big = bold.
 # Define the optimizer. It will update the parameters in the list we created.
 optimizer = torch.optim.SGD(parameters, lr=0.005)
+
+# Peek at shapes of weights and biases:
+print("Hidden layer weight shape  (10 x 2):", hidden_model.weight.shape)
+print("Hidden layer bias shape    (10,)   :", hidden_model.bias.shape)
+print("Output layer weight shape  (1 x 10):", output_model.weight.shape)
+print("Output layer bias shape    (1,)    :", output_model.bias.shape)
 
 
 # Training Loop
