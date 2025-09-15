@@ -1,3 +1,22 @@
+"""
+network_train_validation.py — Train/Validation split & metrics
+
+Concept: Don’t test on what you trained on.
+
+Purpose: Prevent overfitting; learn to evaluate fairly.
+
+Teaching Approach: Quiz analogy—practice vs. real test.
+
+Explain: “We only celebrate grades on the validation set.”
+
+Activity: Compute accuracy on train vs. val; discuss gaps.
+
+Code Focus: the split; calling model.eval(); thresholding probs.
+
+Engagement: Adjust threshold (0.3 vs 0.5) to trade off precision/recall.
+
+Why this order: After training loops stabilize, talk fairness and rigor. (File not shown above, but place it here in your lesson.)
+"""
 import sys
 import torch
 from torch import nn

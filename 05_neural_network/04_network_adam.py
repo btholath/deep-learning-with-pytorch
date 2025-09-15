@@ -1,3 +1,22 @@
+"""
+network_adam.py — Optimizers (SGD → Adam)
+
+Concept: Different “coaches” (optimizers) update weights differently.
+
+Purpose: Show Adam can converge faster/steadier than plain SGD.
+
+Teaching Approach: Bike with gears: Adam auto-tunes step sizes per weight.
+
+Explain: “Adam adapts the learning rate using momentum + variance.”
+
+Activity: Same network, switch SGD ↔ Adam, compare loss curves.
+
+Code Focus: torch.optim.Adam(..., lr=0.005/0.01) vs SGD.
+
+Engagement: Race: which optimizer reaches low loss quicker?
+
+Why this order: Once they grasp training, optimizers make sense.
+"""
 import sys
 import torch
 from torch import nn
@@ -20,7 +39,7 @@ model = nn.Sequential(
 print(model)
 
 loss_fn = torch.nn.BCEWithLogitsLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=0.005)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
 for i in range(0, 500000):
     optimizer.zero_grad()

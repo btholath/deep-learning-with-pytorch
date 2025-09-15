@@ -1,3 +1,22 @@
+"""
+network1.py & 9) network2.py — Build two-layer net “by hand”
+
+Concept: What Sequential does under the hood.
+
+Purpose: Demystify layer-by-layer forward pass and parameter lists.
+
+Teaching Approach: Unplug the LEGO and wire each block yourself.
+
+Explain: “Compute hidden = Linear → Sigmoid → Linear → Logits.”
+
+Activity: Print hidden_model.weight.shape, etc.
+
+Code Focus: Two separate modules, manual forward pass, shared optimizer.
+
+Engagement: Comment out the activation and see what happens.
+
+Why this order: Great capstone—after convenience tools, see the gears.
+"""
 import sys
 import torch
 from torch import nn

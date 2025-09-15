@@ -1,3 +1,22 @@
+"""
+network_batch2.py — Track epoch loss
+
+Concept: Sum/average loss across batches per epoch.
+
+Purpose: Build good habits for monitoring training.
+
+Teaching Approach: “Score after every practice session (epoch).”
+
+Explain: “Loss_sum tells if we’re really improving across all batches.”
+
+Activity: Print epoch loss; plot it.
+
+Code Focus: loss_sum += loss.item() and print every few epochs.
+
+Engagement: Students predict whether the next epoch will be lower.
+
+Why this order: It’s a refinement of batching and monitoring. 
+"""
 import sys
 import torch
 from torch import nn

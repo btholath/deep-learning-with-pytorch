@@ -1,3 +1,22 @@
+"""
+network_relu.py — Try different activations (ReLU vs Sigmoid)
+
+Concept: Activation functions shape learning.
+
+Purpose: ReLU often trains faster than sigmoid inside the network.
+
+Teaching Approach: Draw ReLU and Sigmoid; discuss vanishing gradients.
+
+Explain: “ReLU = pass positives, zero out negatives → simpler math.”
+
+Activity: Swap nn.Sigmoid() ↔ nn.ReLU() and compare training speed/loss.
+
+Code Focus: The middle activation line only.
+
+Engagement: Live plot of loss (if you want) to show learning speed difference.
+
+Why this order: You already know Sequential; now you can tinker inside it.
+"""
 import sys
 import torch
 from torch import nn
@@ -14,7 +33,7 @@ y = torch.tensor(df["Pass/Fail"], dtype=torch.float32)\
 
 model = nn.Sequential(
     nn.Linear(2, 10),
-    nn.Sigmoid(),
+    nn.ReLU(),
     nn.Linear(10, 1)
 )
 print(model)
