@@ -59,6 +59,7 @@ nn.functional.sigmoid(x) → function call.
     Doesn’t “remember” itself as part of a module (like a LEGO block).
     Merit: Quick, clean for single use in forward
     Demerit: Not part of nn.Module → not shown in model.children()
+    Functional sigmoid: Like borrowing a calculator for one calculation.
 
 
 nn.Sigmoid() → layer object (module).
@@ -67,3 +68,4 @@ nn.Sigmoid() → layer object (module).
     Slightly more typing, but clearer in structured models.
     Merit: Fits inside Sequential, model structure is clear; easy to save/load
     Demerit: Slightly longer to write; must create a layer object
+    Module sigmoid: Like owning a calculator and keeping it in your toolbox (so everyone knows it’s part of your kit).
