@@ -1,0 +1,65 @@
+[START]
+   ↓
+[Load Data]
+   - Read CSV file (student_exam_data.csv) using pandas
+   - Input features: X = ["Study Hours", "Previous Exam Score"] (shape: n_samples, 2)
+   - Target: y = ["Pass/Fail"] (shape: n_samples, 1)
+   - Convert X and y to torch.float32 tensors
+   ↓
+[Define Model Components]
+   - Initialize hidden layer: nn.Linear(2, 10) (hidden_model)
+     - Weights: shape (10, 2), Bias: shape (10,)
+   - Initialize output layer: nn.Linear(10, 1) (output_model)
+     - Weights: shape (1, 10), Bias: shape (1,)
+   - Define loss function: BCEWithLogitsLoss
+   - Combine parameters: list(hidden_model.parameters()) + list(output_model.parameters())
+   - Initialize optimizer: SGD with lr=0.005
+   ↓
+[Training Loop (i = 0 to 499,999)]
+   ↓
+[Zero Gradients]
+   - optimizer.zero_grad()
+   ↓
+[Forward Pass]
+   - Compute hidden layer output: hidden_model(X) (Linear: X @ W1 + b1)
+   - Apply sigmoid activation: nn.functional.sigmoid(outputs)
+   - Compute output layer: output_model(outputs) (Linear: hidden_outputs @ W2 + b2)
+   - Output: logits
+   ↓
+[Compute Loss]
+   - loss = loss_fn(logits, y) (BCEWithLogitsLoss)
+   ↓
+[Backpropagation]
+   - loss.backward() (Compute gradients)
+   ↓
+[Update Parameters]
+   - optimizer.step() (Update weights and biases)
+   ↓
+[Check Iteration]
+   - If i % 10000 == 0:
+     → [Print Loss]
+         - Print loss value
+         ↓
+     ← [Return to Loop]
+   - Else:
+     ↓
+[End of Loop?]
+   - If i < 500,000:
+     → [Return to Zero Gradients]
+   - Else:
+     ↓
+[Set Evaluation Mode]
+   - hidden_model.eval()
+   - output_model.eval()
+   ↓
+[Evaluation (with torch.no_grad())]
+   - Compute hidden layer output: hidden_model(X)
+   - Apply sigmoid activation: nn.functional.sigmoid(outputs)
+   - Compute output layer: output_model(outputs) (logits)
+   - Compute predictions: y_pred = nn.functional.sigmoid(outputs) > 0.5
+   - Compute accuracy: mean(y_pred == y)
+   ↓
+[Print Accuracy]
+   - Print mean accuracy
+   ↓
+[END]
