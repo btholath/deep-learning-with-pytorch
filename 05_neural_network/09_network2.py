@@ -158,6 +158,15 @@ print("Output layer weight shape  (1 x 10):", output_model.weight.shape)
 print("Output layer bias shape    (1,)    :", output_model.bias.shape)
 
 
+
+# 6) TRAINING LOOP (PRACTICE OVER AND OVER) ---------------------------------
+# We repeat many times:
+#   a) Forward pass: make a guess from X
+#   b) Compute loss: compare guess vs truth y
+#   c) Backward pass: figure out how to fix weights (gradients)
+#   d) Step: apply a tiny fix with the optimizer
+#
+# NOTE: 500,000 is a LOT; it’s fine for a demo but you can lower it to run faster.
 # Training Loop
 # The forward pass is computed step-by-step.
 print("Training the network...")
