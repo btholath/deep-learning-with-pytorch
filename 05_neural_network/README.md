@@ -79,3 +79,8 @@ To disable training-specific operations, ensuring consistent behavior during pre
 When a model is set to evaluation mode, it deactivates features such as dropout and batch normalization that are only relevant during the training phase. This ensures that the model's behavior is stable and predictible when making predictions, as these features can introduce randomness and variability that are undesirable during the evauation or application of the model.
 
 
+What advantage does using nn.Sequential() offer when building neural networks in PyTorch?
+It simplifies the model architecture by allowing layers and functions to be defined in a single, orderly sequence
+nn.Sequential is a module that allows for the clean and orderly composition of model components, which streamlines the building process.
+By defining a sequence of operations in a modular way, it enables code readability and maintainability, allowing each component to be logically and functionally organized.
+
