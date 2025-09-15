@@ -1,51 +1,83 @@
 """
-network_sequential.py — Build a small network with nn.Sequential
-Concept: Stack layers into a pipeline.
-Purpose: Show how to “snap together” layers cleanly.
-Teaching Approach: LEGO analogy: input → hidden → output.
-Explain: “Hidden neurons let the model learn ‘combos’ of features.”
-Activity: Print the model, count parameters, change hidden size.
-Code Focus: nn.Sequential(nn.Linear(2,10), nn.ReLU(), nn.Linear(10,1)).
-Engagement: Ask students to guess what a hidden neuron might learn (“if hours high and prior score high”).
+GOAL (big picture):
+Teach a tiny neural network to predict if a student will PASS (1) or FAIL (0)
+based on two facts: Study Hours and Previous Exam Score.
 
-Why this order: From single rule → stack of rules. 
-
-GOAL: Stack layers so the model can learn combos of inputs.
-REAL LIFE: Hidden layers let models catch patterns like
-"high hours AND improving scores → likely pass".
+REAL LIFE:
+The same recipe (inputs → hidden layer → output → train) is used for
+spam filters, recommendation systems, and medical risk prediction.
 """
 
 import torch
 from torch import nn
 import pandas as pd
 
+# 1) LOAD THE DATA -----------------------------------------------------------
+# We read a table where each row = one student.
+# Columns we care about:
+#   - "Study Hours" (how long they studied)
+#   - "Previous Exam Score" (last score)
+#   - "Pass/Fail" (our target: 1 = pass, 0 = fail)
 df = pd.read_csv("/workspaces/deep-learning-with-pytorch/05_neural_network/data/student_exam_data.csv")
 
-
-X = torch.tensor(df[["Study Hours","Previous Exam Score"]].values, dtype=torch.float32)
-y = torch.tensor(df["Pass/Fail"], dtype=torch.float32).reshape((-1,1))
-
-# A small network: 2 → 10 → 1
-model = nn.Sequential(
-    nn.Linear(2, 10),  # first mix features into 10 hidden "ideas"
-    nn.ReLU(),         # keep positives, drop negatives (speeds learning)
-    nn.Linear(10, 1)   # turn hidden ideas into a final score
+# 2) TURN DATA INTO TENSORS (numbers PyTorch understands) -------------------
+# X = inputs the model will look at (two numbers per student)
+#    Shape is [number_of_students, 2]
+X = torch.tensor(
+    df[["Study Hours", "Previous Exam Score"]].values,
+    dtype=torch.float32
 )
-print(model)
 
+# y = the correct answers (labels) the model should learn to predict
+#    We reshape to a column vector so each row lines up with each student
+y = torch.tensor(df["Pass/Fail"].values, dtype=torch.float32).reshape((-1, 1))
+
+# 3) BUILD A TINY NEURAL NETWORK --------------------------------------------
+# nn.Sequential lets us stack layers like LEGO blocks:
+#   - nn.Linear(2, 10): mixes the two inputs into 10 hidden "ideas"
+#   - nn.ReLU(): squishes negatives to 0 → helps learn faster (nonlinear power)
+#   - nn.Linear(10, 1): turns those ideas into ONE final score (called a "logit")
+model = nn.Sequential(
+    nn.Linear(2, 10),
+    nn.ReLU(),
+    nn.Linear(10, 1)
+)
+print("Our model:", model)
+
+# 4) CHOOSE HOW TO MEASURE WRONGNESS (LOSS) ----------------------------------
+# BCEWithLogitsLoss is perfect for yes/no problems:
+# - It expects raw scores (logits) from the model (no sigmoid yet).
+# - It compares them to the true answers (0 or 1).
 loss_fn = torch.nn.BCEWithLogitsLoss()
+
+# 5) CHOOSE A "COACH" TO UPDATE WEIGHTS (OPTIMIZER) --------------------------
+# The optimizer looks at the loss and nudges the model's weights to improve.
+# lr (learning rate) = how big each nudge is (small = careful, big = bold).
 optimizer = torch.optim.SGD(model.parameters(), lr=0.005)
 
+# 6) TRAINING LOOP: GUESS → CHECK → LEARN → REPEAT ---------------------------
+# We repeat many times so the model gets better step by step.
 for i in range(0, 50_000):
-    optimizer.zero_grad()
-    logits = model(X)
-    loss = loss_fn(logits, y)
-    loss.backward()
-    optimizer.step()
+    optimizer.zero_grad()      # clear old gradient notes from last step
+    logits = model(X)          # forward pass: raw scores (can be any real number)
+    loss = loss_fn(logits, y)  # how wrong are we right now?
+    loss.backward()            # compute how each weight should change (backprop)
+    optimizer.step()           # take a small step to improve the weights
+
+    # Print progress every so often so we can SEE learning happening.
     if i % 10_000 == 0:
         print("loss:", loss.item())
 
+# 7) EVALUATE (NO LEARNING, JUST CHECKING) -----------------------------------
+# model.eval() = good habit; turns off training-only layers (like dropout).
 model.eval()
-with torch.no_grad():
-    preds = (torch.sigmoid(model(X)) > 0.5)
-    print("accuracy:", (preds.float()==y).float().mean().item())
+with torch.no_grad():  # we’re not learning now; this makes it faster/safer
+    # Turn final raw scores (logits) into probabilities with sigmoid (0..1).
+    probs = torch.sigmoid(model(X))
+
+    # Decide pass (True) if probability > 0.5; otherwise fail (False).
+    preds = probs > 0.5
+
+    # Compare predictions to the real answers and compute accuracy.
+    accuracy = (preds.float() == y).float().mean().item()
+    print("accuracy:", accuracy)
