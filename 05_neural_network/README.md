@@ -47,3 +47,23 @@ The hidden layer processes inputs through its neurons, which are capable of dete
 Why is the sigmoid function applied at the output layer in the neural network model?
 To convert the networtk output into probability values for binary classification
 The sigmoid function maps linear outputs to a [0,1] range, ideal for binary outcomes like pass/fail predictions.
+
+
+# nn.functional.sigmoid() v/s nn.Sigmoid()
+Both nn.functional.sigmoid() and nn.Sigmoid() do the same math (the logistic squish → turns any number into 0–1).
+The difference is how they’re used inside PyTorch code.
+
+nn.functional.sigmoid(x) → function call.
+    Good for quick one-off use.
+    Doesn’t store any learnable parameters (because sigmoid has none).
+    Doesn’t “remember” itself as part of a module (like a LEGO block).
+    Merit: Quick, clean for single use in forward
+    Demerit: Not part of nn.Module → not shown in model.children()
+
+
+nn.Sigmoid() → layer object (module).
+    Good for putting inside a model (e.g., in nn.Sequential).
+    Plays nicely when saving/loading models (state_dict).
+    Slightly more typing, but clearer in structured models.
+    Merit: Fits inside Sequential, model structure is clear; easy to save/load
+    Demerit: Slightly longer to write; must create a layer object

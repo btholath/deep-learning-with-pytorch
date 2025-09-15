@@ -19,7 +19,9 @@ import torch
 from torch import nn
 import pandas as pd
 
-df = pd.read_csv("./data/student_exam_data.csv")
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/05_neural_network/data/student_exam_data.csv")
+
+
 X = torch.tensor(df[["Study Hours","Previous Exam Score"]].values, dtype=torch.float32)
 y = torch.tensor(df["Pass/Fail"], dtype=torch.float32).reshape((-1,1))
 
