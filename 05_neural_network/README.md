@@ -84,3 +84,19 @@ It simplifies the model architecture by allowing layers and functions to be defi
 nn.Sequential is a module that allows for the clean and orderly composition of model components, which streamlines the building process.
 By defining a sequence of operations in a modular way, it enables code readability and maintainability, allowing each component to be logically and functionally organized.
 
+# Activation function: ReLU
+- Rectified Linear Unit
+- Enables us to train large neural networks
+- A popular activation functions for neural networks
+- ReLU function f(x) = max(0,x) = ( x + |x| ) /2 
+- |x| means Absolute of x
+
+# sigmoid outputs vs ReLU outputs
+- The sigmoid function outputs values between 0 and 1, which can result in very small gradients during backpropagation
+- ReLU outputs either 0 or the input itself (if positive)
+- This preserving larger gradients, making backpropagation easier
+- Sparse activation:
+  - Only about 50% of neurons are activated -< reduced computational complexity and improived generalizaton.
+- Efficient computation:
+  - It only involves a max() operation
+  - This is easier to compute compared to exponentials 
