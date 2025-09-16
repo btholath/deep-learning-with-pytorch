@@ -3,7 +3,7 @@ import torch
 from torch import nn
 import pandas as pd
 
-df = pd.read_csv("data/loan_data.csv")
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/06_loan_approval/data/loan_data.csv")
 df = df[["loan_status", "person_income", "loan_intent", "loan_percent_income", "credit_score"]]
 df = pd.get_dummies(df, columns=["loan_intent"])
 print(df.columns)

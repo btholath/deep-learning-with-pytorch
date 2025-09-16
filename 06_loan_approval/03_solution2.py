@@ -21,7 +21,7 @@ import pandas as pd
 
 # 1) READ THE DATA -----------------------------------------------------------
 # We load the CSV into a table (DataFrame). Each row is one loan application.
-df = pd.read_csv("data/loan_data.csv")  # adjust path if needed
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/06_loan_approval/data/loan_data.csv")  # adjust path if needed
 
 # 2) PICK USEFUL COLUMNS (FEATURES + LABEL) ---------------------------------
 # Keep:
