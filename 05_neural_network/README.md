@@ -108,6 +108,10 @@ It simplifies the gradient propagation process during backpropagation, making it
 The RELU function outputs zero for all negative inputs and retains positive inputs unchanged, which prevents the vanishing gradient problem that is often encountered with sigmoid in deep networks. This makes ReLU particulary effective for deeper architectures where gradient flow must be maintained across many layers.
 
 
+How does the Adam optimizer enhance the training of neural networks compared to traditional Stochastic Gradient Descent?
+Adam adjusts learning rates adaptively for each parameter, incorporating the benefits of momentum to achieve faster and more stable convergence.
+Adam enhances training by adapting learning rates based on the first and second moments of the gradients, which helps in navigating through parameter space
+more efficiently than SGD, which uses a constant learning rate throughout the process.
 
 
 
