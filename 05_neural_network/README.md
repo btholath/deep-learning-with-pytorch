@@ -115,4 +115,11 @@ more efficiently than SGD, which uses a constant learning rate throughout the pr
 
 
 
+# Essential Neural Network Concepts
+# Activation functions (e.g. ReLU), learning rates and mini-batch learning.
+
+How does the structure of a neural network affect its ability to capture complex patterns in the data?
+Layers of neurons with onlinear activation functions enable the network to learn nonlinear relationships and interactions within the data
+Each layer in a neural network can extract different levels of features, and stacking multiple layers with nonlinearities allows for the modeling of complex patterns that simple linear moels cannot.
+
 
