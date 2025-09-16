@@ -12,6 +12,7 @@ Teach a neural network to predict if a loan will be approved (1) or not (0) usin
 REAL LIFE:
 Banks and lenders use models like this to quickly screen loan applications.
 The main objective is to build a "smart program" (a neural network) that can look at a new loan application and make a decision: approved (1) or not approved (0).
+
 """
 
 import torch
@@ -31,8 +32,18 @@ df = df[["loan_status", "person_income", "loan_intent", "loan_percent_income", "
 # 3) TURN WORDS INTO SWITCHES (ONE-HOT ENCODING) -----------------------------
 # The column 'loan_intent' is text (e.g., 'EDUCATION', 'DEBTCONSOLIDATION').
 # Models need numbers, so we create extra 0/1 columns for each intent.
+# Computers and neural networks can only understand numbers, but some of our data, like loan_intent, is text (e.g., "EDUCATION").
+# The code uses a clever trick called one-hot encoding to fix this. 
+# It creates a new column for each possible loan intent and puts a 1 in the column that matches the intent for that row, and a 0 everywhere else.
 df = pd.get_dummies(df, columns=["loan_intent"])
 
+
+"""
+Separating Inputs and Outputs
+To train the model, we need to separate the "answers" from the "facts."
+The inputs (X) are all the facts the model will use (income, credit score, and the new one-hot encoded columns).
+The target (y) is the single answer we want to predict (loan_status)
+"""
 # 4) BUILD THE TARGET y (WHAT WE WANT TO PREDICT) ---------------------------
 # y must be a column vector of float numbers (0.0 or 1.0).
 y = torch.tensor(df["loan_status"].values, dtype=torch.float32).reshape((-1, 1))
@@ -42,6 +53,15 @@ y = torch.tensor(df["loan_status"].values, dtype=torch.float32).reshape((-1, 1))
 X_data = df.drop("loan_status", axis=1).astype("float32").values
 X = torch.tensor(X_data, dtype=torch.float32)
 
+
+"""
+Normalizing the Features (Making a Fair Comparison)
+Imagine trying to compare "person's income" (a big number, like $50,000) with "loan percentage of income" (a small number, like 0.1). 
+The big number might seem more important to the model just because it's bigger.
+To prevent this, the code normalizes all the input features. 
+It subtracts the average value from each column and divides by a scaling factor. 
+This makes all the numbers in our input matrix feel equally important to the model.
+"""
 # 6) NORMALIZE FEATURES (FAIR COMPARISON) -----------------------------------
 # Different columns have different scales (income vs. percent vs. score).
 # We subtract the mean and divide by the standard deviation so each
