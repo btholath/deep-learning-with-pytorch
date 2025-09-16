@@ -122,4 +122,20 @@ How does the structure of a neural network affect its ability to capture complex
 Layers of neurons with onlinear activation functions enable the network to learn nonlinear relationships and interactions within the data
 Each layer in a neural network can extract different levels of features, and stacking multiple layers with nonlinearities allows for the modeling of complex patterns that simple linear moels cannot.
 
+Why might changing the learning rate be necessary during the training process of a neural network?
+Adjusting the learning rate can help overcome learning slowdowns or avoid overshooting the minima, which optimizes the training efficiency and effectiveness
+A well-adjusted learning rate ensures that the network learns efficiently without taking steps that are too large, which can skip over optimal solutions, or too small, which can slow down the training process significantly.
+
+What is the purpose of using Mini-Batch learning in neural network training?
+To enhance training efficiency by allowing frequent updates to model weights with manageable subsets of data
+Mini-Batch learning breaks the training dataset into smaller batches, enabling more frequent gradient updates and quicker convergence compared to training with the entire dataset at once.
+
+Why is loss_sum += loss.item() used in mini-batch learning?
+To accumulate the total loss over all Mini-Batches within an epoch, providing a comprehensive measure of model performance during that epoch.
+The loss.item() converts the loss tensor to a Python scalar, and loss_sum += adds this value to a running total, which helps in tracking the cumulative loss across multiple batches for better monitoring and adjustment of the training process.
+
+Why is loss_sum initialized to 0 at the start of every training iteration in mini-batch learning?
+To rest the cumulative loss calculation for each new epoch, ensuring that the loss recorded is specific to the current training cycle.
+Initializing loss_sum to zero at the beginining of each epoch prevents carryover fom previous epochs, allowing for accurate tracking of loss and model performance improvement over time.
+
 
