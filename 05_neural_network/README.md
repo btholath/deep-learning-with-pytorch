@@ -99,4 +99,8 @@ By defining a sequence of operations in a modular way, it enables code readabili
   - Only about 50% of neurons are activated -< reduced computational complexity and improived generalizaton.
 - Efficient computation:
   - It only involves a max() operation
-  - This is easier to compute compared to exponentials 
+  - This is easier to compute compared to exponentials
+
+
+  # Optimizing Training: optimizer Adam
+  
