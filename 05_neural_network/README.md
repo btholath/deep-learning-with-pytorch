@@ -102,5 +102,13 @@ By defining a sequence of operations in a modular way, it enables code readabili
   - This is easier to compute compared to exponentials
 
 
-  # Optimizing Training: optimizer Adam
-  
+# Optimizing Training: optimizer Adam
+What is a key advantage of using the ReLU activation function over sigmoid in neural networks?
+It simplifies the gradient propagation process during backpropagation, making it more effective for training deeper networks.
+The RELU function outputs zero for all negative inputs and retains positive inputs unchanged, which prevents the vanishing gradient problem that is often encountered with sigmoid in deep networks. This makes ReLU particulary effective for deeper architectures where gradient flow must be maintained across many layers.
+
+
+
+
+
+
