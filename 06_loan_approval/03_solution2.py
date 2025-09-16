@@ -1,10 +1,17 @@
 """
+Understanding the Loan Prediction Neural Network
+This Python script is a great example of a complete machine learning workflow. 
+Its goal is to teach a computer how to predict if a loan application should be approved or not, based on a person's financial information.
+
+Here is a step-by-step breakdown of how the code works and what each part does:
+
 GOAL:
-Teach a neural network to predict if a loan will be approved (1) or not (0)
-using facts about a person (income, credit score, and loan intent).
+The main objective is to build a "smart program" (a neural network) that can look at a new loan application and make a decision: approved (1) or not approved (0).
+Teach a neural network to predict if a loan will be approved (1) or not (0) using facts about a person (income, credit score, and loan intent).
 
 REAL LIFE:
 Banks and lenders use models like this to quickly screen loan applications.
+The main objective is to build a "smart program" (a neural network) that can look at a new loan application and make a decision: approved (1) or not approved (0).
 """
 
 import torch
