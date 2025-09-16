@@ -1,55 +1,83 @@
-"""
-network_batch.py — Mini-batches
-
-Concept: Train on small chunks (batches) instead of all data at once.
-
-Purpose: Faster, more stable training; uses less memory.
-
-Teaching Approach: “Do homework in chunks each day, not all at once.”
-
-Explain: “Each batch gives a nudge; many nudges per epoch.”
-
-Activity: Try batch sizes 8, 32, 128; watch loss smoothness.
-
-Code Focus: the for start in range(0, num_entries, batch_size): loop.
-
-Engagement: “Find the batch size that makes loss fall fastest for our data.”
-
-Why this order: After optimizers, batching is the next practical lever.
-
-GOAL: Train in chunks (mini-batches) and use Adam to learn faster.
-
-REAL LIFE: Big datasets don't fit in memory; batching is the norm.
-"""
+# network_batch.py — Training a neural network with mini-batches.
+#
+# Concept: This script shows how to train a neural network using small chunks of
+# data called "mini-batches." This is the standard way to train large models
+# on real-world datasets.
+#
+# Teaching Analogy:
+# Instead of doing all your homework at once (which is hard and slow), you
+# do a small chunk of problems each day. Each chunk helps you learn a little
+# bit, and by the end of the week, you've learned everything.
+#
+# GOAL: Train in chunks (mini-batches) and use the Adam optimizer to learn faster.
+#
+# REAL LIFE: When datasets have millions of entries, they won't fit into a
+# computer's memory all at once. Training with mini-batches allows us to
+# work with manageable chunks of data at a time.
 
 import torch
 from torch import nn
 import pandas as pd
 
-df = pd.read_csv("./data/student_exam_data.csv")
-X = torch.tensor(df[["Study Hours","Previous Exam Score"]].values, dtype=torch.float32)
-y = torch.tensor(df["Pass/Fail"], dtype=torch.float32).reshape((-1,1))
+# Load the student exam data from the CSV file.
+df = pd.read_csv("/workspaces/deep-learning-with-pytorch/05_neural_network/data/student_exam_data.csv")
 
-model = nn.Sequential(nn.Linear(2,10), nn.ReLU(), nn.Linear(10,1))
+# Convert the data into PyTorch tensors.
+X = torch.tensor(df[["Study Hours", "Previous Exam Score"]].values, dtype=torch.float32)
+y = torch.tensor(df["Pass/Fail"], dtype=torch.float32).reshape((-1, 1))
+
+# Define the neural network model: 2 inputs -> 10 hidden units -> 1 output.
+model = nn.Sequential(
+    nn.Linear(2, 10),  # First layer to get 10 "hidden ideas" from our 2 features.
+    nn.ReLU(),         # A "keep positives" filter to help the network learn.
+    nn.Linear(10, 1)   # Second layer to turn the ideas into a final score.
+)
+
+# Define the "wrongness meter" and the "smart teacher" (optimizer).
 loss_fn = torch.nn.BCEWithLogitsLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.005)  # faster steps
+optimizer = torch.optim.Adam(model.parameters(), lr=0.005) # Adam is a smart teacher that learns quickly.
 
+# The total number of data entries we have.
 num_entries = X.size(0)
+# The size of each homework "chunk" (mini-batch).
 batch_size = 32
 
+print(f"Starting training with a batch size of {batch_size}...")
+
+# This is the outer loop, called an "epoch." It means we're going through
+# the entire dataset one time.
 for epoch in range(0, 100):
+    # This is the inner loop for mini-batches. We create chunks of data
+    # from the full dataset.
+    # The 'start' variable goes from 0 to the end, in steps of 'batch_size'.
     for start in range(0, num_entries, batch_size):
+        # We find the end of the current batch.
         end = min(num_entries, start + batch_size)
+        
+        # We select a small batch of data to work with.
         Xb, yb = X[start:end], y[start:end]
 
+        # Reset the gradients (the "fix-it" notes for our robot brain).
         optimizer.zero_grad()
+        
+        # Get the network's prediction for this small batch.
         loss = loss_fn(model(Xb), yb)
+        
+        # Figure out how to fix the brain based on this small batch.
         loss.backward()
+        
+        # Apply the fixes.
         optimizer.step()
+        
+    # Every 10 epochs, we print the loss to see how well we're doing.
     if epoch % 10 == 0:
-        print("epoch", epoch, "loss", loss.item())
+        print(f"Epoch {epoch:3d} | Loss = {loss.item():.6f}")
 
+# After training, we evaluate the final performance on all the data.
+print("\nTraining complete. Evaluating the final model...")
 model.eval()
 with torch.no_grad():
+    # Make predictions and get the accuracy.
     preds = (torch.sigmoid(model(X)) > 0.5)
-    print("accuracy:", (preds.float()==y).float().mean().item())
+    accuracy = (preds.float() == y).float().mean().item()
+    print(f"Final Accuracy: {accuracy:.4f}")
