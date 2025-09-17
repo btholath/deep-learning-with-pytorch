@@ -50,3 +50,55 @@ output neurons      1                       1 per label                         
 output layer 
 activation          Logistic                Logistic                                Softmax
 Loss function       Cross entropy           Cross entropy                           Cross entropy
+
+---
+
+## 🌟 General Hyperparameters
+
+### 1. **Input neurons → One per input feature**
+
+* **Example:** Imagine predicting your exam score.
+
+  * Input features = how many hours you studied, how much sleep you got, and how many practice problems you solved.
+  * So you’d have **3 input neurons**: one for each feature.
+
+---
+
+### 2. **Hidden layers → 1 to 5**
+
+* **Example:** Think of solving a mystery.
+
+  * Each hidden layer is like a group of detectives who pass clues to the next team.
+  * For easy mysteries, you might need only 1 team (1 layer).
+  * For harder mysteries (like figuring out if a photo has a cat, dog, or car), you need more detective teams (3–5 layers).
+
+---
+
+### 3. **Hidden activation → ReLU**
+
+* **Example:** ReLU acts like a filter that says:
+
+  * “If the clue is useful (positive), keep it. If it’s useless (negative), throw it away.”
+  * Like a teacher only paying attention to correct steps in your homework instead of mistakes.
+
+---
+
+## 🌟 Output Hyperparameters by Task
+
+| **Type**                                                                                                         | **Real-world Example**                                                                                       | **Explanation**                                                                                                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Binary classification** (output neurons = 1, activation = Logistic, loss = Cross entropy)                      | Predict if a message is **spam or not spam**.                                                                | Only two outcomes (yes/no). Logistic activation gives a probability (like 80% spam). Cross entropy punishes wrong predictions.                                                    |
+| **Multilabel binary classification** (output neurons = 1 per label, activation = Logistic, loss = Cross entropy) | Predict what’s in a **YouTube video thumbnail**: It could have a **cat**, **car**, and **tree** all at once. | Each label (cat, car, tree) gets its own neuron. Logistic activation gives probability for each label independently.                                                              |
+| **Multiclass classification** (output neurons = 1 per class, activation = Softmax, loss = Cross entropy)         | Predict what kind of **fruit** is in a picture: **apple**, **banana**, or **orange**.                        | Only one answer is correct. Softmax gives probabilities that add up to 100% (e.g., 70% apple, 20% banana, 10% orange). Cross entropy makes sure the model learns the right class. |
+
+---
+
+✅ So, :
+
+* **Binary = one yes/no answer.**
+* **Multilabel = many yes/no answers at the same time.**
+* **Multiclass = pick one from many options.**
+
+---
+
+Would you like me to also **draw a simple diagram (with boxes and arrows)** for these three cases (binary, multilabel, multiclass) so students can *see* the difference?
