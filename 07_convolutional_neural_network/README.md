@@ -36,3 +36,17 @@ Overlap: A smaller stride leads to more overlap between the receptive fields of 
 Output Size: A larger stride makes the output layer of the network smaller. Since each step is bigger, fewer steps are needed to cross the image. This reduces the number of neurons required in the next layer, making the network more efficient.
 
 In essence, stride is a balance between capturing every detail (small stride) and compressing the information to save computation (large stride). Choosing the right stride depends on the specific problem you're trying to solve and the features you want the network to focus on.
+
+
+# Neural Network Classification Hyperparameters
+Hyperparameter          Typical value
+input neurons           One per input feature
+hidden layers           Depends on the problem, but typically 1 to 5
+hidden activation       ReLU
+
+
+Hyperparameter      Binary classification   Multilabel binary classification        Multiclass classification
+output neurons      1                       1 per label                             1 per class
+output layer 
+activation          Logistic                Logistic                                Softmax
+Loss function       Cross entropy           Cross entropy                           Cross entropy
