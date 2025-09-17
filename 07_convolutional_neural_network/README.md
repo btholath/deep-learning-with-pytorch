@@ -21,3 +21,18 @@ These maps of simple features are then passed to the next layer of the network, 
 
 This is why CNNs are so effective for image recognition. They are designed to understand the spatial relationships and patterns within an image, just like the human brain. This allows them to identify objects with remarkable accuracy, a task that is nearly impossible for a traditional neural network
 
+# Understanding Stride in CNNs
+The stride is a simple but powerful idea that controls how the network scans an image. Think of it as the size of the "step" the convolutional window takes as it slides across the image.
+
+What is Stride?
+Imagine your convolutional layer's receptive field—the small window that looks at a group of pixels—is a camera. Stride is the number of pixels this camera moves before it takes its next "picture."
+
+If the stride is 1, the window moves just one pixel at a time, creating a lot of overlap between its views.
+If the stride is 2, the window skips a pixel with each move.  This means less overlap and a smaller number of "pictures" taken.
+
+The stride value you choose directly affects two important things:
+Overlap: A smaller stride leads to more overlap between the receptive fields of neighboring neurons. This means more information is shared and reused. A larger stride means less overlap, and the neurons are looking at more distinct, non-overlapping regions of the image.
+
+Output Size: A larger stride makes the output layer of the network smaller. Since each step is bigger, fewer steps are needed to cross the image. This reduces the number of neurons required in the next layer, making the network more efficient.
+
+In essence, stride is a balance between capturing every detail (small stride) and compressing the information to save computation (large stride). Choosing the right stride depends on the specific problem you're trying to solve and the features you want the network to focus on.

@@ -1,0 +1,17 @@
+🎯 Goal: Train a Convolutional Neural Network (CNN) to recognize clothing
+         from the Fashion-MNIST dataset (like T-shirts, shoes, bags).
+
+Real-Life Example:
+👉 Online stores (Amazon, Flipkart) use CNNs to auto-tag product images
+   (shirt, sneaker, dress).
+
+# 1) DEVICE SETUP: CPU or GPU
+# 2) LOAD DATASET: Fashion-MNIST (clothing images, 28x28 grayscale)
+    # Mini-batches of 32 images
+# 3) BUILD THE MODEL: CNN with multiple layers
+    # 🔎 First block: find simple patterns (edges, corners)
+    # 🔎 Second block: find complex shapes (sleeves, soles)
+    # 🧠 Fully connected decision-making layers
+# 4) LOSS + OPTIMIZER
+# 5) TRAINING LOOP
+# 6) TEST ACCURACY
